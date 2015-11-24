@@ -1,0 +1,4 @@
+noremap <c-]> <esc>
+inoremap <c-]> <esc>
+inoremap ¥ \
+inoremap \ ¥
