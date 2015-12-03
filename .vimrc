@@ -167,8 +167,10 @@ let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'scheme' : $HOME.'/.gosh_completions',
     \ 'objc' : $DOTVIM.'/dict/objc.dict',
     \ 'ruby' : $DOTVIM.'/dict/ruby.dict',
-    \ 'php' : $DOTVIM.'/dict/php.dict'
+    \ 'php' : $DOTVIM.'/dict/php.dict',
+    \ 'perl' : $DOTVIM.'/dict/perl.dict'
         \ }
+"wget https://raw.github.com/Cside/dotfiles/master/.vim/dict/perl.dict
 
 "" Define sources.
 "if !exists('g:neocomplete#sources')
@@ -267,3 +269,7 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 " angularjs
 let g:used_javascript_libs = 'angularjs'
+
+" for perl
+autocmd BufNewFile,BufRead *.pm set filetype=perl
+autocmd BufNewFile,BufRead *.inc set filetype=perl
