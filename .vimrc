@@ -83,7 +83,6 @@ NeoBundle 'Shougo/vimfiler.vim'
 "NeoBundle 'vim-scripts/VimClojure'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'tokorom/clang_complete.git'
 NeoBundle 'tokorom/clang_complete-getopts-ios.git'
@@ -95,10 +94,11 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
-" for javascript
+" for JavaScript
 NeoBundle 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'digitaltoad/vim-jade'
+" for Gist
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
 
