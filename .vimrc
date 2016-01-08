@@ -99,6 +99,8 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'mattn/webapi-vim'
 
 filetype plugin indent on
 NeoBundleCheck
