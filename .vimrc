@@ -101,6 +101,7 @@ NeoBundle 'digitaltoad/vim-jade'
 " for Gist
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
+NeoBundle 'jreybert/vimagit'
 
 filetype plugin indent on
 NeoBundleCheck
