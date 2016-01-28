@@ -276,3 +276,6 @@ let g:used_javascript_libs = 'angularjs'
 " for perl
 autocmd BufNewFile,BufRead *.pm set filetype=perl
 autocmd BufNewFile,BufRead *.inc set filetype=perl
+
+" Gist
+let g:gist_post_private = 1
