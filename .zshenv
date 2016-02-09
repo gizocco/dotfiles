@@ -18,6 +18,7 @@ alias vg='vagrant'
 alias srm='srm -m'
 alias sha2='shasum -a 256'
 alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
+alias js='osascript -l JavaScript'
 
 #alias rm='rm -i'
 #alias google='w3m www.google.co.jp'
