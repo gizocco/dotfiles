@@ -63,12 +63,23 @@ vnoremap > >gv
 
 filetype off
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle'))
+""NeoBundleの設定
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
-""NeoBundleの設定
+" Required:
+set runtimepath^=/Users/toshikimurakami01/.vim/bundle/neobundle.vim/
+
+" Required:
+call neobundle#begin(expand('/Users/toshikimurakami01/.vim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Add or remove your Bundles here:
+" My Bundles
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
@@ -103,7 +114,14 @@ NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'jreybert/vimagit'
 
+" Required:
+call neobundle#end()
+
+" Required:
 filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
 NeoBundleCheck
 
 filetype indent on
