@@ -285,8 +285,10 @@ let g:user_emmet_settings = {
 "let g:vimshell_user_prompt='fnamemodify(getcwd(), ":~")'
 nnoremap <silent><Space>h :VimShell<CR>
 
-" Markdownの設定
+" Markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+" vim-markdown setting
+let g:vim_markdown_folding_disabled = 1
 
 " angularjs
 let g:used_javascript_libs = 'angularjs'
