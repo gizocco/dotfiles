@@ -14,7 +14,6 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V
 set tabstop=4
 set expandtab
 set shiftwidth=4
-set noswapfile
 set wildmenu
 set wildmode=full
 set cursorline
