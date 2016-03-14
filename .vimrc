@@ -52,7 +52,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap + <C-a>
 nnoremap - <C-x>
-nnoremap Y y$
 nnoremap x "_x
 vnoremap x "_x
 "vv で行末まで選択
