@@ -297,3 +297,16 @@ autocmd BufNewFile,BufRead *.inc set filetype=perl
 
 " Gist
 let g:gist_post_private = 1
+
+" 辞書検索 in Mac
+if system("uname")=="Darwin\n"
+    " Mac の辞書.appで開く {{{
+    " 引数に渡したワードを検索
+    command! -nargs=1 MacDict      call system('open '.shellescape('dict://'.<q-args>))
+    " カーソル下のワードを検索
+    command! -nargs=0 MacDictCWord call system('open '.shellescape('dict://'.shellescape(expand('<cword>'))))
+    " 辞書.app を閉じる
+    command! -nargs=0 MacDictClose call system("osascript -e 'tell application \"Dictionary\" to quit'")
+    " 辞書にフォーカスを当てる
+    command! -nargs=0 MacDictFocus call system("osascript -e 'tell application \"Dictionary\" to activate'")
+endif
