@@ -14,7 +14,7 @@ set columns=100
 set lines=48
 "set guifont=Monaco:h16
 "set guifont=Droid\ Sans\ Mono\ for\ Powerline:h17
-set guifont=Monoid\ Regular:h18
+set guifont=Ricty\ Diminished:h18
 
 "カラースキームの設定
 "colorscheme jellybeans

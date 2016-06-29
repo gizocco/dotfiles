@@ -58,6 +58,10 @@ vnoremap v ^$h
 "選択範囲のインデントを連続して変更
 vnoremap < <gv
 vnoremap > >gv
+" Neosnippet key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 filetype off
 
@@ -67,10 +71,10 @@ if &compatible
 endif
 
 " Required:
-set runtimepath^=/Users/toshikimurakami01/.vim/bundle/neobundle.vim/
+set runtimepath^=/Users/mtoshiki/.vim/bundle/neobundle.vim/
 
 " Required:
-call neobundle#begin(expand('/Users/toshikimurakami01/.vim/bundle'))
+call neobundle#begin(expand('/Users/mtoshiki/.vim/bundle'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -111,6 +115,9 @@ NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'jreybert/vimagit'
+" NeoSnippet
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 " Required:
 call neobundle#end()
@@ -129,10 +136,6 @@ let g:molokai_original = 1
 let g:rehash256 = 1
 set background=dark
 set t_Co=256
-
-""php - syntax check
-"autocmd FileType php set makeprg=php\ -l\ %
-"autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
 
 ""unite.vimの設定
 "キーマップの設定 
@@ -189,7 +192,6 @@ let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'php' : $DOTVIM.'/dict/php.dict',
     \ 'perl' : $DOTVIM.'/dict/perl.dict'
         \ }
-"wget https://raw.github.com/Cside/dotfiles/master/.vim/dict/perl.dict
 
 "" Define sources.
 "if !exists('g:neocomplete#sources')
@@ -262,10 +264,6 @@ let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\
 let g:neocomplete#sources#omni#input_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#sources#omni#input_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*qq::'kjq
-
 " restart.vim setting
 let g:restart_sessionoptions = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
 
@@ -273,10 +271,6 @@ let g:restart_sessionoptions = 'blank,buffers,curdir,folds,help,localoptions,tab
 let g:user_emmet_settings = {
             \ 'lang' : 'ja'
             \ }
-" powerline setting
-"let g:Powerline_symbols = 'fancy'
-"set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-"set noshowmode
 
 " vimshell setting
 "let g:vimshell_user_prompt=':~'
@@ -309,4 +303,17 @@ if system("uname")=="Darwin\n"
     command! -nargs=0 MacDictClose call system("osascript -e 'tell application \"Dictionary\" to quit'")
     " 辞書にフォーカスを当てる
     command! -nargs=0 MacDictFocus call system("osascript -e 'tell application \"Dictionary\" to activate'")
+endif
+
+"" Neosnippet
+" SuperTab like snippets behavior.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
 endif
