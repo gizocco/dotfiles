@@ -1,4 +1,4 @@
-""Vimの設定
+"" Vimの設定
 set backupdir=$HOME/.vimbackup
 set clipboard=unnamed
 set nocompatible
@@ -24,103 +24,28 @@ let $DOTVIM = $HOME . '/.vim'
 
 source $VIMRUNTIME/macros/matchit.vim
 
-"let g:filetype_m = 'objc'
-
 ""キーバインドの設定
-"imap {} {}<left>
-"imap [] []<left>
-"imap () ()<left>
-"<Space>.で.vimrcを開く
+""<Space>.で.vimrcを開く
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
-"<Space>sでファイルを保存
+""<Space>sでファイルを保存
 nnoremap <silent><Space>s   :<C-u>update<CR>
-"<Space>kでバッファの削除
+""<Space>kでバッファの削除
 nnoremap <silent><Space>k   :bd<CR>
-"nnoremap <silent><Space>t   :TweetVimSay<CR>
-"挿入モードのキーバインドをEmacs風に設定
-"inoremap <C-a> <Home>
-"inoremap <C-e> <End>
-"inoremap <C-b> <Left>
-"inoremap <C-f> <Right>
-"inoremap <C-n> <Down>
-"inoremap <C-p> <Up>
 inoremap <C-h> <BS>
 inoremap <C-d> <Del>
-"inoremap <C-k> <C-o>D
 nnoremap j gj
 nnoremap k gk
 nnoremap + <C-a>
 nnoremap - <C-x>
 nnoremap x "_x
 vnoremap x "_x
-"vv で行末まで選択
+""vv で行末まで選択
 vnoremap v ^$h
-"選択範囲のインデントを連続して変更
+""選択範囲のインデントを連続して変更
 vnoremap < <gv
 vnoremap > >gv
 
 filetype off
-
-""NeoBundleの設定
-if &compatible
-  set nocompatible               " Be iMproved
-endif
-
-" Required:
-set runtimepath^=/Users/toshikimurakami01/.vim/bundle/neobundle.vim/
-
-" Required:
-call neobundle#begin(expand('/Users/toshikimurakami01/.vim/bundle'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" Add or remove your Bundles here:
-" My Bundles
-NeoBundle 'vim-scripts/sudo.vim'
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-    \ 'windows' : 'make -f make_mingw32.mak',
-    \ 'cygwin' : 'make -f make_cygwin.mak',
-    \ 'mac' : 'make -f make_mac.mak',
-    \ 'unix' : 'make -f make_unix.mak',
-  \ },
-  \ }
-NeoBundle 'Shougo/vimfiler.vim'
-"NeoBundle 'vim-scripts/VimClojure'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'tokorom/clang_complete.git'
-NeoBundle 'tokorom/clang_complete-getopts-ios.git'
-NeoBundle 'tyru/restart.vim'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'Lokaltog/powerline'
-NeoBundle 'Lokaltog/powerline-fonts'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
-" for JavaScript
-NeoBundle 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-NeoBundle 'othree/javascript-libraries-syntax.vim'
-NeoBundle 'digitaltoad/vim-jade'
-" for Gist
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'jreybert/vimagit'
-
-" Required:
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
 
 filetype indent on
 colorscheme molokai
@@ -130,45 +55,38 @@ let g:rehash256 = 1
 set background=dark
 set t_Co=256
 
-""php - syntax check
-"autocmd FileType php set makeprg=php\ -l\ %
-"autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
+"" # vim-plug #
+"" Install command 
+" $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-""unite.vimの設定
-"キーマップの設定 
-"nnoremap    [unite]   <Nop>
-"nmap    <Space>f [unite]
-"nnoremap [unite]u  :<C-u>Unite -no-split<Space>
-"nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
-"nnoremap <silent> [unite]k :<C-u>Unite<Space>bookmark<CR>
-"nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
-"nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir file<CR>
-"nnoremap <silent> [unite]a :<c-u>UniteBookmarkAdd<CR>
-"nnoremap <silent> ,vr :UniteResume<CR>
-"autocmd FileType unite call s:unite_my_settings()
-"function! s:unite_my_settings()"{{{
-"        nmap <buffer> <Esc> <Plug>(unite_exit)
-"endfunction"}}}
-"" vinarise
-"let g:vinarise_enable_auto_detect = 1
-"" unite-build map
-"nnoremap <silent> ,vb :Unite build<CR>
-"nnoremap <silent> ,vcb :Unite build:!<CR>
-"nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
-" }}}
+call plug#begin('~/.vim/plugged')
 
-"" vimfiler setting
-nmap     <silent> <Space>ff :VimFilerBufferDir -split -simple -winwidth=30 -no-quit<CR>
-nmap     <silent> <Space>fu :Unite -no-split<CR>
-nnoremap <silent> <Space>fa :UniteBookmarkAdd<CR>
-nnoremap <silent> <Space>fb :Unite bookmark<CR>
-nnoremap <silent> <Space>fr :Unite buffer<CR>
-call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
+"" Plugin list
+Plug 'vim-scripts/sudo.vim'
+Plug 'Shougo/vimproc.vim', { 'dir': '~/.vim/plugged/vimproc.vim', 'do': 'make' }
+Plug 'vim-scripts/VimClojure'
+Plug 'Shougo/vimshell'
+Plug 'Shougo/neocomplete'
+Plug 'tyru/restart.vim'
+Plug 'mattn/emmet-vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'kannokanno/previm'
+Plug 'tyru/open-browser.vim'
+" for JavaScript
+Plug 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'digitaltoad/vim-jade'
+" for Gist
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
+Plug 'jreybert/vimagit'
 
+call plug#end()
+
+"" # Indivisual Plugins Setting #
 let g:vimfiler_as_default_explorer = 1
 
-""neocomplete
-
+"" neocomplete
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
@@ -189,14 +107,6 @@ let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'php' : $DOTVIM.'/dict/php.dict',
     \ 'perl' : $DOTVIM.'/dict/perl.dict'
         \ }
-"wget https://raw.github.com/Cside/dotfiles/master/.vim/dict/perl.dict
-
-"" Define sources.
-"if !exists('g:neocomplete#sources')
-"		  let g:neocomplete#sources = {}
-"endif
-"let g:neocomplete#sources.ruby = ['file', 'tag', 'neosnippet', 'vim', 'dictionary', 'omni', 'member', 'syntax', 'include', 'buffer']
-"       let g:neocomplete#sources.cpp = ['buffer', 'include']
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
@@ -204,7 +114,6 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
 
@@ -223,27 +132,6 @@ inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplete#enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplete#enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -262,26 +150,8 @@ let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\
 let g:neocomplete#sources#omni#input_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#sources#omni#input_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*qq::'kjq
-
 " restart.vim setting
 let g:restart_sessionoptions = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
-
-" emmet-vim setting
-let g:user_emmet_settings = {
-            \ 'lang' : 'ja'
-            \ }
-" powerline setting
-"let g:Powerline_symbols = 'fancy'
-"set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-"set noshowmode
-
-" vimshell setting
-"let g:vimshell_user_prompt=':~'
-"let g:vimshell_user_prompt='fnamemodify(getcwd(), ":~")'
-nnoremap <silent><Space>h :VimShell<CR>
 
 " Markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
