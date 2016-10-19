@@ -44,6 +44,10 @@ vnoremap v ^$h
 ""選択範囲のインデントを連続して変更
 vnoremap < <gv
 vnoremap > >gv
+" Neosnippet key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 filetype off
 
@@ -179,4 +183,17 @@ if system("uname")=="Darwin\n"
     command! -nargs=0 MacDictClose call system("osascript -e 'tell application \"Dictionary\" to quit'")
     " 辞書にフォーカスを当てる
     command! -nargs=0 MacDictFocus call system("osascript -e 'tell application \"Dictionary\" to activate'")
+endif
+
+"" Neosnippet
+" SuperTab like snippets behavior.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
 endif
