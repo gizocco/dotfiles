@@ -1,5 +1,5 @@
 "" Vimの設定
-set backupdir=$HOME/.vimbackup
+set nobackup
 set clipboard=unnamed
 set nocompatible
 set expandtab
@@ -84,6 +84,7 @@ Plug 'digitaltoad/vim-jade'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'jreybert/vimagit'
+Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -197,3 +198,10 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+
+" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers=['eslint']

@@ -76,3 +76,8 @@ zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
 bindkey "^I" menu-complete
 
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
